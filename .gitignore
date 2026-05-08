@@ -1,0 +1,96 @@
+# ==========================
+# Dependencies & Build Outputs
+# ==========================
+# Node.js
+node_modules/
+dist/
+build/
+.npm
+.lock-wscript
+.builds
+*.tgz
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+
+# Rust
+target/
+Cargo.lock  # Note: Commit for binaries, ignore for libraries
+
+# ==========================
+# Environment & Secrets
+# ==========================
+# Critical: Never commit secrets
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+credentials.json
+service-account.json
+
+# ==========================
+# OS System Files
+# ==========================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+
+# ==========================
+# IDE & Editor Files
+# ==========================
+# VS Code
+.vscode/
+*.code-workspace
+
+# IntelliJ/IDEA
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Eclipse
+*.pydevproject
+.project
+.metadata
+bin/
+tmp/
+target/
+
+# ==========================
+# Logs & Temp Files
+# ==========================
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+*~
+
+# ==========================
+# Lock Files
+# ==========================
+# Do NOT ignore these for most projects to ensure consistent dependencies
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+# Gemfile.lock
+# poetry.lock
+# Exception: Cargo.lock for Rust libraries only   
