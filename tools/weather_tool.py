@@ -17,7 +17,7 @@ def get_weather(city):
 
             return {
                 "success": False,
-                "error": "Weather not found"
+                "error": f'I cannot find a city named "{city}".'
             }
 
         result = {

@@ -45,6 +45,11 @@ def detect_tool(query):
         "news",
         "latest",
         "today"
+        "conflict",
+        "attack",
+        "military",
+        "russia",
+        "ukraine"
     ]
 
     # wiki / people
@@ -52,7 +57,25 @@ def detect_tool(query):
         "who is",
         "tell me about",
         "history",
-        "information about"
+        "information about",
+        "how many",
+        "current",
+        "currently",
+        "total number",
+        "population",
+        "capital"
+    ]
+    
+    geopolitics_keywords = [
+        "iran",
+        "israel",
+        "war",
+        "military",
+        "conflict",
+        "china",
+        "russia",
+        "ukraine",
+        "hormuz"
     ]
 
     for word in weather_keywords:
@@ -66,6 +89,10 @@ def detect_tool(query):
     for word in maps_keywords:
         if word in query:
             return "maps"
+        
+    for word in geopolitics_keywords:
+        if word in query:
+            return "geopolitics"
 
     for word in news_keywords:
         if word in query:

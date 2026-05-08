@@ -6,7 +6,7 @@ def search_web(query):
 
         results = DDGS().text(
             query,
-            max_results=3
+            max_results=5
         )
 
         formatted = []
@@ -18,12 +18,12 @@ def search_web(query):
             body = r.get("body", "")
 
             formatted.append(
-                f"{title}: {body[:300]}"
+                f"Title: {title}\nSnippet: {body[:400]}"
             )
 
         return {
             "success": True,
-            "data": "\n".join(formatted)
+            "data": "\n\n".join(formatted)
         }
 
     except Exception as e:

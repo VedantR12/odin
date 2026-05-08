@@ -1,5 +1,6 @@
 from groq import Groq
 import json
+from memory import get_memory
 
 from config import API_KEY
 
@@ -50,30 +51,37 @@ Format:
 
 def ask_llm(user_input):
 
+    messages = [
+
+        {
+            "role": "system",
+            "content": SYSTEM_PROMPT
+        }
+    ]
+
+    # add short-term memory
+    messages.extend(get_memory())
+
+    # latest user message
+    messages.append({
+
+        "role": "user",
+        "content": user_input
+    })
+
     completion = client.chat.completions.create(
 
         model="llama-3.1-8b-instant",
 
         frequency_penalty=0.7,
-        
+
         presence_penalty=0.4,
 
         temperature=0.9,
 
         max_tokens=200,
 
-        messages=[
-
-            {
-                "role": "system",
-                "content": SYSTEM_PROMPT
-            },
-
-            {
-                "role": "user",
-                "content": user_input
-            }
-        ]
+        messages=messages
     )
 
     raw = completion.choices[0].message.content
