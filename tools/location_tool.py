@@ -1,26 +1,15 @@
-import re
+import spacy
+
+nlp = spacy.load("en_core_web_sm")
 
 def extract_city(text):
 
-    text = text.lower()
+    doc = nlp(text)
 
-    patterns = [
+    for ent in doc.ents:
 
-        r"weather in ([a-zA-Z\s]+?)(?:\?|$)",
-        r"temperature in ([a-zA-Z\s]+?)(?:\?|$)",
-        r"forecast for ([a-zA-Z\s]+?)(?:\?|$)",
-        r"in ([a-zA-Z\s]+?)(?:\?|$)"
-    ]
+        if ent.label_ in ["GPE", "LOC"]:
 
-    for pattern in patterns:
+            return ent.text
 
-        match = re.search(pattern, text)
-
-        if match:
-
-            city = match.group(1).strip()
-
-            return city.title()
-
-    # default city
     return "Delhi"

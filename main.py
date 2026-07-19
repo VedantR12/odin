@@ -34,7 +34,7 @@ while True:
     if not user_input or len(user_input.strip()) < 2:
         continue
 
-    add_memory("user", user_input)
+    
     set_state("thinking")
     send_emotion("thinking")
     
@@ -158,6 +158,8 @@ while True:
     send_emotion("talking")
 
     speak(response)
-    add_memory("assistant", response)
+    if "cannot find a city" not in response.lower():
+
+        add_memory("assistant", response)
 
     send_emotion("idle")

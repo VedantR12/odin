@@ -12,9 +12,9 @@ from vad import has_speech
 print("Loading Whisper model...")
 
 model = WhisperModel(
-    "small",
+    "medium",
     device="cuda",
-    compute_type="int8"
+    compute_type="float16"
 )
 
 
@@ -93,7 +93,7 @@ def listen():
 
     segments, info = model.transcribe(
         "input.wav",
-        beam_size=5,
+        beam_size=8,
         vad_filter=True,
         language="en"
     )

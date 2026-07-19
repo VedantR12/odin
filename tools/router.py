@@ -57,6 +57,7 @@ def detect_tool(query):
         "who is",
         "tell me about",
         "history",
+        "something about",
         "information about",
         "how many",
         "current",

@@ -1,7 +1,7 @@
 from groq import Groq
 import json
 from memory import get_memory
-
+from memory import get_memory, add_memory
 from config import API_KEY
 
 client = Groq(api_key=API_KEY)
@@ -12,7 +12,9 @@ You are an expressive physical AI assistant robot connected to a real body.
 You speak naturally, casually, and emotionally.
 
 Rules:
-- You strictly refer your master, owner, user, creator as Vedant.
+- The user's name is Vedant.
+- Use it naturally and occasionally.
+- Do not overuse it.
 - Never pretend to search the internet.
 - Never pretend to look things up.
 - Never say:
@@ -68,6 +70,13 @@ def ask_llm(user_input):
         "role": "user",
         "content": user_input
     })
+    add_memory("user", user_input)
+    
+    print("\nMEMORY:")
+
+    for m in messages:
+
+        print(m)
 
     completion = client.chat.completions.create(
 
